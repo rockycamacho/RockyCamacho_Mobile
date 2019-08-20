@@ -15,7 +15,7 @@ class GetBuildingsApiTest: BaseInjectedTest() {
 
     @Test
     fun `get buildings success`() {
-        apiService.getExercises()
+        apiService.getBuildings()
             .test()
             .assertComplete()
             .assertNoErrors()

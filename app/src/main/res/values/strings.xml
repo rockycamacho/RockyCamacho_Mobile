@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Willow Test</string>
+    <string name="app_name">Willow</string>
+    <string name="empty_building_list">No buildings found</string>
+    <string name="view_on_map_button">View on Map</string>
+    <string name="go_to_explorer_button">Go to Explorer</string>
+    <string name="error_no_map_app_install">Error: No map app installed</string>
+    <string name="register_button">Register</string>
+    <string name="error_explorer_not_available">Explorer is not available for this building</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.ezqueue.owner.app.presentation.base
+package com.rockycamacho.willow.testapp.presentation.base
 
 import android.content.Context
 import android.os.Bundle
@@ -31,19 +31,16 @@ abstract class BaseFragment<VM : ViewModel> : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        initViews()
-        bindViewModel()
+        initViews(savedInstanceState)
     }
 
-    open fun initViews() {
+    open fun initViews(savedInstanceState: Bundle?) {
 
     }
 
     abstract fun injectDependencies(appComponent: AppComponent)
 
     abstract fun getLayoutResId(): Int
-
-    abstract fun bindViewModel()
 
     abstract fun getViewModelClass(): Class<VM>
 
