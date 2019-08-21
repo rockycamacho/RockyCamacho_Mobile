@@ -58,7 +58,7 @@
             app:iconTint="@color/primary_light_text"
             app:backgroundTint="#99000000"
             app:rippleColor="#99000000"
-            app:strokeColor="@color/colorPrimary"
+            app:strokeColor="@color/colorAccent"
             app:icon="@drawable/ic_location_on_black_24dp"
             app:iconGravity="textStart"
             app:layout_constraintTop_toTopOf="@+id/image"
@@ -81,7 +81,7 @@
             app:iconTint="@color/primary_light_text"
             app:backgroundTint="#99000000"
             app:rippleColor="#99000000"
-            app:strokeColor="@color/colorPrimary"
+            app:strokeColor="@color/colorAccent"
             app:layout_constraintTop_toTopOf="@+id/image"
             app:layout_constraintStart_toEndOf="@+id/view_on_map_button"
             app:layout_constraintEnd_toEndOf="parent"
@@ -101,7 +101,7 @@
             <!--app:iconTint="@color/primary_light_text"-->
             <!--app:backgroundTint="#99000000"-->
             <!--app:rippleColor="#99000000"-->
-            <!--app:strokeColor="@color/colorPrimary"-->
+            <!--app:strokeColor="@color/colorAccent"-->
             <!--app:icon="@drawable/ic_arrow_forward_black_24dp"-->
             <!--app:iconGravity="textEnd"-->
             <!--app:layout_constraintTop_toTopOf="@+id/image"-->

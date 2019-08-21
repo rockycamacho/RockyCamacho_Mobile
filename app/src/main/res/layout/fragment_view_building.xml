@@ -68,7 +68,7 @@
             app:iconTint="@color/primary_light_text"
             app:backgroundTint="#99000000"
             app:rippleColor="#99000000"
-            app:strokeColor="@color/colorPrimary"
+            app:strokeColor="@color/colorAccent"
             app:icon="@drawable/ic_location_on_black_24dp"
             app:iconGravity="textStart"
             app:layout_constraintTop_toBottomOf="@+id/client_name"

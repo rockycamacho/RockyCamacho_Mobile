@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="32dp">
+
+    <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/choose_your_filters"/>
+
+    <TextView
+            android:id="@+id/country"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/country"/>
+
+    <TextView
+            android:id="@+id/clear_countries_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackgroundBorderless"
+            app:layout_constraintBaseline_toBaselineOf="@+id/country"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/clear"/>
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/select_country"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:singleSelection="false"
+            app:layout_constraintTop_toBottomOf="@+id/country"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/country_australia"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Australia"/>
+
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/country_germany"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Germany"/>
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <TextView
+            android:id="@+id/city"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            app:layout_constraintTop_toBottomOf="@+id/select_country"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/city"/>
+
+    <TextView
+            android:id="@+id/clear_cities_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:paddingTop="8dp"
+            android:background="?selectableItemBackgroundBorderless"
+            app:layout_constraintBaseline_toBaselineOf="@+id/city"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/clear"/>
+
+    <LinearLayout
+            android:id="@+id/cities"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/city"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="vertical">
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/select_australian_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleSelection="false">
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/city_melbourne"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Melbourne"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/city_sydney"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sydney"/>
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/select_german_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleSelection="false">
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/city_rottweil"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rottweil"/>
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/save_filters_button"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:textColor="@color/primary_light_text"
+            app:iconTint="@color/primary_light_text"
+            app:backgroundTint="#99000000"
+            app:rippleColor="#99000000"
+            app:strokeColor="@color/colorAccent"
+            app:layout_constraintTop_toBottomOf="@+id/cities"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintVertical_bias="0.95"
+            android:textSize="12sp"
+            android:text="@string/save_filters"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
