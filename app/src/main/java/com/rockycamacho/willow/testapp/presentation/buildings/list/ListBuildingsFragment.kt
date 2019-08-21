@@ -46,19 +46,19 @@ class ListBuildingsFragment : BaseFragment<ListBuildingsViewModel>() {
         }, { building ->
             adapter.notifyDataSetChanged()
         }, { building ->
-            if(!building.availableProducts.contains(AvailableProduct.EXPLORER)) {
-                Toast.makeText(requireActivity(), getString(R.string.error_explorer_not_available), Toast.LENGTH_SHORT).show()
-            }
-            else {
-            requireFragmentManager().beginTransaction()
-                .replace(
-                    R.id.fragment_container,
-                    ViewBuildingFragment.newInstance(building)
-                )
-                .addToBackStack(
-                    ViewBuildingFragment::class.java.simpleName
-                )
-                .commit()
+            if (!building.availableProducts.contains(AvailableProduct.EXPLORER)) {
+                Toast.makeText(requireActivity(), getString(R.string.error_explorer_not_available), Toast.LENGTH_SHORT)
+                    .show()
+            } else {
+                requireFragmentManager().beginTransaction()
+                    .replace(
+                        R.id.fragment_container,
+                        ViewBuildingFragment.newInstance(building)
+                    )
+                    .addToBackStack(
+                        ViewBuildingFragment::class.java.simpleName
+                    )
+                    .commit()
             }
         })
         list.adapter = adapter
@@ -77,8 +77,7 @@ class ListBuildingsFragment : BaseFragment<ListBuildingsViewModel>() {
         val mapIntent = Intent(Intent.ACTION_VIEW, uri)
         if (mapIntent.resolveActivity(requireActivity().packageManager) != null) {
             startActivity(mapIntent)
-        }
-        else {
+        } else {
             Toast.makeText(requireActivity(), getString(R.string.error_no_map_app_install), Toast.LENGTH_SHORT).show()
         }
     }
@@ -86,11 +85,11 @@ class ListBuildingsFragment : BaseFragment<ListBuildingsViewModel>() {
     private fun renderState(state: State) {
         refresh.isRefreshing = state.isLoading
         adapter.submitList(state.data)
-        empty.visibility = when(state.data.isEmpty()) {
+        empty.visibility = when (state.data.isEmpty()) {
             true -> View.VISIBLE
             else -> View.GONE
         }
-        list.visibility = when(state.data.isNotEmpty()) {
+        list.visibility = when (state.data.isNotEmpty()) {
             true -> View.VISIBLE
             else -> View.GONE
         }
