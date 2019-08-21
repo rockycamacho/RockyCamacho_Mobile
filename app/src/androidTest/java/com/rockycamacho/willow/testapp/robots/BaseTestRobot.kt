@@ -12,9 +12,9 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 open class BaseTestRobot {
 
     fun fillEditText(resId: Int, text: String): ViewInteraction =
-        onView(withId(resId)).perform(scrollTo(), replaceText(text), closeSoftKeyboard())
+        onView(withId(resId)).perform(replaceText(text), closeSoftKeyboard())
 
-    fun clickButton(resId: Int): ViewInteraction = onView((withId(resId))).perform(scrollTo(), click())
+    fun clickButton(resId: Int): ViewInteraction = onView((withId(resId))).perform(click())
 
     fun textView(resId: Int): ViewInteraction = onView(withId(resId))
 
