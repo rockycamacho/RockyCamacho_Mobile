@@ -1,7 +1,10 @@
 package com.rockycamacho.willow.testapp.data.network.models
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Building(
     @field:Json(name = "id")
     val id: Long? = null,
@@ -16,5 +19,7 @@ data class Building(
     @field:Json(name = "availableProducts")
     val availableProducts: List<AvailableProduct> = listOf(),
     @field:Json(name = "imageUrl")
-    val imageUrl: String? = null
-)
+    val imageUrl: String? = null,
+    @field:Json(name = "isRegistered")
+    var isRegistered: Boolean = false
+) : Parcelable

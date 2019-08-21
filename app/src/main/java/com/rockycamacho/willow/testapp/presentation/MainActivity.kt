@@ -4,6 +4,7 @@ import android.os.Bundle
 import com.rockycamacho.willow.testapp.R
 import com.rockycamacho.willow.testapp.di.AppComponent
 import com.rockycamacho.willow.testapp.presentation.base.BaseActivity
+import com.rockycamacho.willow.testapp.presentation.buildings.list.ListBuildingsFragment
 
 class MainActivity : BaseActivity() {
     override fun injectDependencies(appComponent: AppComponent) {
@@ -18,9 +19,8 @@ class MainActivity : BaseActivity() {
             supportFragmentManager.beginTransaction()
                 .add(
                     R.id.fragment_container,
-                    ExercisesListFragment.newInstance()
+                    ListBuildingsFragment.newInstance()
                 )
-                .addToBackStack(ExercisesListFragment::class.java.simpleName)
                 .commit()
         }
     }
