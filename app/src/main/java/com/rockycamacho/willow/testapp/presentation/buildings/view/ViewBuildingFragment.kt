@@ -6,16 +6,13 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import coil.api.load
-import coil.transform.RoundedCornersTransformation
 import com.jakewharton.rxbinding3.view.clicks
 import com.rockycamacho.willow.testapp.R
 import com.rockycamacho.willow.testapp.data.network.models.Building
 import com.rockycamacho.willow.testapp.di.AppComponent
 import com.rockycamacho.willow.testapp.presentation.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_view_building.*
-import kotlinx.android.synthetic.main.item_building.view.*
 import timber.log.Timber
-import java.lang.StringBuilder
 
 class ViewBuildingFragment : BaseFragment<ViewBuildingViewModel>() {
 
