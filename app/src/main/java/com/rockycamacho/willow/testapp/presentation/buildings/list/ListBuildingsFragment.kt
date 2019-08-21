@@ -51,7 +51,7 @@ class ListBuildingsFragment : BaseFragment<ListBuildingsViewModel>() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.menu_filter) {
             val defaultFilter =
-                BuildingFilter(mutableListOf("Australia", "Germany"), mutableListOf("Melbourne", "Sydney", "Rottweil"))
+                BuildingFilter(mutableListOf(), mutableListOf())
             val filter = viewModel.observableState.value?.filter ?: defaultFilter
             val dialog = FilterBuildingsDialogFragment.newInstance(filter)
             dialog.setOnSelectFilterListener { filter ->
