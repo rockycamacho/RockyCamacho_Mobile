@@ -5,6 +5,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class BuildingFilter(
-    var countries: List<String> = listOf(),
-    var cities: List<String> = listOf()
+    var countries: MutableList<String> = mutableListOf(),
+    var cities: MutableList<String> = mutableListOf()
 ) : Parcelable

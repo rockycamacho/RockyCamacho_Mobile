@@ -3,6 +3,8 @@ package com.rockycamacho.willow.testapp.presentation.buildings.list
 import android.app.Application
 import com.github.pwittchen.reactivenetwork.library.rx2.ReactiveNetwork
 import com.rockycamacho.willow.testapp.data.network.ApiService
+import com.rockycamacho.willow.testapp.data.network.models.Building
+import com.rockycamacho.willow.testapp.presentation.buildings.BuildingFilter
 import com.ww.roxie.BaseViewModel
 import com.ww.roxie.Reducer
 import io.reactivex.Observable
@@ -27,11 +29,15 @@ class ListBuildingsViewModel @Inject constructor(
                 exception = null
             )
             is Change.FilterData -> state.copy(
-                filter = change.filter
+                isLoading = false,
+                filter = change.filter,
+                filteredData = filterBuildings(state.data, change.filter),
+                exception = null
             )
             is Change.Success -> state.copy(
                 isLoading = false,
                 data = change.data,
+                filteredData = filterBuildings(change.data, state.filter),
                 exception = null
             )
             is Change.Error -> state.copy(
@@ -39,6 +45,19 @@ class ListBuildingsViewModel @Inject constructor(
                 exception = change.exception
             )
         }
+    }
+
+    private fun filterBuildings(
+        data: List<Building>,
+        filter: BuildingFilter?
+    ): List<Building> {
+        if(filter == null) {
+            return data
+        }
+        val list = data.filter { filter.cities.contains(it.address!!.city) }
+        Timber.d("unfiltered data: %s", data)
+        Timber.d("filtered list: %s", list)
+        return list
     }
 
     init {

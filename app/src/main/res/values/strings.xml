@@ -6,4 +6,11 @@
     <string name="error_no_map_app_install">Error: No map app installed</string>
     <string name="register_button">Register</string>
     <string name="error_explorer_not_available">Explorer is not available for this building</string>
+    <string name="menu_filter">Filter</string>
+    <string name="menu_filter_tooltip">Select filters</string>
+    <string name="country">Country</string>
+    <string name="city">City</string>
+    <string name="save_filters">Save Filters</string>
+    <string name="clear">Clear</string>
+    <string name="choose_your_filters">Choose your filters</string>
 </resources>

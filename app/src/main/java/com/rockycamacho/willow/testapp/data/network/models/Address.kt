@@ -12,8 +12,10 @@ data class Address(
     val line1: String? = null,
     @field:Json(name = "line2")
     val line2: String? = null,
-    @field:Json(name = "address")
+    @field:Json(name = "city")
     val city: String? = null,
+    @field:Json(name = "address")
+    val address: String? = null,
     @field:Json(name = "state")
     val state: String? = null,
     @field:Json(name = "zipCode")

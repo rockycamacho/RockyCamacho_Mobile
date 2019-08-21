@@ -10,6 +10,7 @@ import kotlinx.android.parcel.Parcelize
 data class State(
     val isLoading: Boolean = false,
     val data: List<Building> = listOf(),
+    val filteredData: List<Building> = listOf(),
     val filter: BuildingFilter? = null,
     val exception: Throwable? = null
 ) : BaseState, Parcelable
