@@ -28,6 +28,14 @@ class SelectBuildingFilterRobot : BaseTestRobot() {
         pressBack()
     }
 
+    fun clickClearCities() {
+        onView(withId(R.id.clear_cities_button)).perform(click())
+    }
+
+    fun clickClearCountries() {
+        onView(withId(R.id.clear_countries_button)).perform(click())
+    }
+
     fun clickButtonWithText(text: String) {
         onView(withText(text)).perform(click())
     }
