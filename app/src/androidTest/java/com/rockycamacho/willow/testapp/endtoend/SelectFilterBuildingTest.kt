@@ -22,13 +22,61 @@ class SelectFilterBuildingTest : BaseEspressoTest() {
     }
 
     @Test
-    fun uncheckAustralia_AustralianCitiesShouldDisappear() {
+    fun uncheckAustralia_AustralianCitiesShouldAppear() {
         activityTestRule.launchActivity(null)
         listBuildings {
             isShown()
             clickFilter()
         }.goToSelectBuildingFilterScreen {
             isShown()
+
+            assertButtonVisible("Australia")
+            assertButtonNotChecked("Australia")
+
+            assertButtonNotVisible("Sydney")
+            assertButtonNotVisible("Melbourne")
+
+            clickButtonWithText("Australia")
+
+            assertButtonVisible("Australia")
+            assertButtonChecked("Australia")
+            assertButtonVisible("Sydney")
+            assertButtonVisible("Melbourne")
+        }
+    }
+
+    @Test
+    fun uncheckGermany_GermanCitiesShouldAppear() {
+        activityTestRule.launchActivity(null)
+        listBuildings {
+            isShown()
+            clickFilter()
+        }.goToSelectBuildingFilterScreen {
+            isShown()
+
+            assertButtonVisible("Germany")
+            assertButtonNotChecked("Germany")
+
+            assertButtonNotVisible("Rottweil")
+
+            clickButtonWithText("Germany")
+
+            assertButtonVisible("Germany")
+            assertButtonChecked("Germany")
+            assertButtonVisible("Rottweil")
+        }
+    }
+
+    @Test
+    fun recheckAustralia_AustralianCitiesShouldDisappear() {
+        activityTestRule.launchActivity(null)
+        listBuildings {
+            isShown()
+            clickFilter()
+        }.goToSelectBuildingFilterScreen {
+            isShown()
+
+            clickButtonWithText("Australia")
 
             assertButtonVisible("Sydney")
             assertButtonVisible("Melbourne")
@@ -41,7 +89,7 @@ class SelectFilterBuildingTest : BaseEspressoTest() {
     }
 
     @Test
-    fun uncheckGermany_GermanCitiesShouldDisappear() {
+    fun recheckGermany_GermanCitiesShouldDisappear() {
         activityTestRule.launchActivity(null)
         listBuildings {
             isShown()
@@ -49,48 +97,11 @@ class SelectFilterBuildingTest : BaseEspressoTest() {
         }.goToSelectBuildingFilterScreen {
             isShown()
 
+            clickButtonWithText("Germany")
             assertButtonVisible("Rottweil")
 
             clickButtonWithText("Germany")
             assertButtonNotVisible("Rottweil")
-        }
-    }
-
-    @Test
-    fun recheckAustralia_AustralianCitiesShouldReappear() {
-        activityTestRule.launchActivity(null)
-        listBuildings {
-            isShown()
-            clickFilter()
-        }.goToSelectBuildingFilterScreen {
-            isShown()
-
-            clickButtonWithText("Australia")
-
-            assertButtonNotVisible("Sydney")
-            assertButtonNotVisible("Melbourne")
-
-            clickButtonWithText("Australia")
-
-            assertButtonVisible("Sydney")
-            assertButtonVisible("Melbourne")
-        }
-    }
-
-    @Test
-    fun recheckGermany_GermanCitiesShouldReappear() {
-        activityTestRule.launchActivity(null)
-        listBuildings {
-            isShown()
-            clickFilter()
-        }.goToSelectBuildingFilterScreen {
-            isShown()
-
-            clickButtonWithText("Germany")
-            assertButtonNotVisible("Rottweil")
-
-            clickButtonWithText("Germany")
-            assertButtonVisible("Rottweil")
         }
     }
 
@@ -103,12 +114,13 @@ class SelectFilterBuildingTest : BaseEspressoTest() {
         }.goToSelectBuildingFilterScreen {
             isShown()
 
-            assertButtonChecked("Germany")
-            assertButtonChecked("Rottweil")
-
-            clickButtonWithText("Germany")
             assertButtonNotChecked("Germany")
             assertButtonNotVisible("Rottweil")
+            assertButtonNotChecked("Rottweil")
+
+            clickButtonWithText("Germany")
+            assertButtonChecked("Germany")
+            assertButtonVisible("Rottweil")
 
             clickSaveFilter()
         }.goToListBuildingsScreen {
@@ -117,8 +129,8 @@ class SelectFilterBuildingTest : BaseEspressoTest() {
         }.goToSelectBuildingFilterScreen {
             isShown()
 
-            assertButtonNotChecked("Germany")
-            assertButtonNotVisible("Rottweil")
+            assertButtonChecked("Germany")
+            assertButtonVisible("Rottweil")
         }
     }
 
@@ -131,11 +143,13 @@ class SelectFilterBuildingTest : BaseEspressoTest() {
         }.goToSelectBuildingFilterScreen {
             isShown()
 
-            assertButtonChecked("Australia")
-            assertButtonChecked("Melbourne")
-            assertButtonChecked("Sydney")
+            assertButtonNotChecked("Australia")
+            assertButtonNotVisible("Melbourne")
+            assertButtonNotChecked("Melbourne")
+            assertButtonNotVisible("Sydney")
+            assertButtonNotChecked("Sydney")
 
-            clickButtonWithText("Sydney")
+            clickButtonWithText("Australia")
 
             clickSaveFilter()
         }.goToListBuildingsScreen {
@@ -146,10 +160,69 @@ class SelectFilterBuildingTest : BaseEspressoTest() {
 
             assertButtonChecked("Australia")
             assertButtonChecked("Melbourne")
+            assertButtonChecked("Sydney")
+        }
+    }
+
+    @Test
+    fun clickClearCities_clearCities() {
+        activityTestRule.launchActivity(null)
+        listBuildings {
+            isShown()
+            clickFilter()
+        }.goToSelectBuildingFilterScreen {
+            isShown()
+
+            assertButtonNotChecked("Australia")
+            assertButtonNotVisible("Melbourne")
+            assertButtonNotChecked("Melbourne")
+            assertButtonNotVisible("Sydney")
+            assertButtonNotChecked("Sydney")
+
+            clickButtonWithText("Australia")
+
+            assertButtonChecked("Melbourne")
+            assertButtonChecked("Sydney")
+
+            clickClearCities()
+
+            assertButtonNotChecked("Melbourne")
             assertButtonNotChecked("Sydney")
         }
     }
 
+    @Test
+    fun clickClearCountries() {
+        activityTestRule.launchActivity(null)
+        listBuildings {
+            isShown()
+            clickFilter()
+        }.goToSelectBuildingFilterScreen {
+            isShown()
 
+            assertButtonNotChecked("Australia")
+
+            clickButtonWithText("Australia")
+
+            assertButtonChecked("Australia")
+
+            clickClearCountries()
+
+            assertButtonNotChecked("Australia")
+
+
+
+            clickButtonWithText("Australia")
+            clickButtonWithText("Germany")
+
+            assertButtonChecked("Australia")
+            assertButtonChecked("Germany")
+
+            clickClearCountries()
+
+            assertButtonNotChecked("Australia")
+            assertButtonNotChecked("Germany")
+        }
+    }
 
 }

@@ -54,6 +54,9 @@ class ListBuildingsViewModel @Inject constructor(
         if(filter == null) {
             return data
         }
+        if(filter.cities.isEmpty()) {
+            return data
+        }
         val list = data.filter { filter.cities.contains(it.address!!.city) }
         Timber.d("unfiltered data: %s", data)
         Timber.d("filtered list: %s", list)
