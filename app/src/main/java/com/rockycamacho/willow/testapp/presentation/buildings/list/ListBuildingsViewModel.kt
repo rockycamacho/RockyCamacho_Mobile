@@ -46,7 +46,7 @@ class ListBuildingsViewModel @Inject constructor(
     }
 
     private fun bindActions() {
-        val fetchQueuesChange = actions.ofType<Action.FetchBuildings>()
+        val fetchItemsChange = actions.ofType<Action.FetchBuildings>()
             .switchMap { ReactiveNetwork.observeNetworkConnectivity(application) }
             .switchMap { action ->
                 apiService.getBuildings()
@@ -66,7 +66,7 @@ class ListBuildingsViewModel @Inject constructor(
                     .startWith(Change.Loading)
             }
 
-        var allChanges = Observable.merge(fetchQueuesChange, filterDataChange)
+        var allChanges = Observable.merge(fetchItemsChange, filterDataChange)
 
         disposables += allChanges
             .scan(initialState, reducer)

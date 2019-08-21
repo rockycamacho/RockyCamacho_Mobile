@@ -46,7 +46,6 @@ class ViewBuildingViewModel @Inject constructor() : BaseViewModel<Action, State>
                     .startWith(Change.Loading)
             }
 
-
         disposables += fetchBuildingChange
             .scan(initialState, reducer)
             .distinctUntilChanged()
