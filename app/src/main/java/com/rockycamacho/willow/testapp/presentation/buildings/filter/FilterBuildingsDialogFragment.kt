@@ -46,12 +46,19 @@ class FilterBuildingsDialogFragment : BaseBottomSheetDialogFragment() {
         )
         select_country.addOnButtonCheckedListener { group, checkedId, isChecked ->
             if (checkedId == R.id.country_australia) {
+                if(!isChecked) {
+                    city_melbourne.isChecked = false
+                    city_sydney.isChecked = false
+                }
                 select_australian_city.visibility = when (isChecked) {
                     true -> View.VISIBLE
                     else -> View.GONE
                 }
             }
             if (checkedId == R.id.country_germany) {
+                if(!isChecked) {
+                    city_rottweil.isChecked = false
+                }
                 select_german_city.visibility = when (isChecked) {
                     true -> View.VISIBLE
                     else -> View.GONE
