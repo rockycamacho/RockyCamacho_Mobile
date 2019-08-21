@@ -1,7 +1,10 @@
 package com.rockycamacho.willow.testapp.data.network.models
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Address(
     @field:Json(name = "id")
     val id: String? = null,
@@ -9,7 +12,7 @@ data class Address(
     val line1: String? = null,
     @field:Json(name = "line2")
     val line2: String? = null,
-    @field:Json(name = "city")
+    @field:Json(name = "address")
     val city: String? = null,
     @field:Json(name = "state")
     val state: String? = null,
@@ -21,4 +24,4 @@ data class Address(
     val longitude: Double? = null,
     @field:Json(name = "latitude")
     val latitude: Double? = null
-)
+) : Parcelable

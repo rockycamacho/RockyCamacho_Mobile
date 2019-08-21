@@ -11,6 +11,6 @@ interface ApiService {
     fun getUser(): Single<User>
 
     @GET("c5eb3b858ff810febd3dfbd5960d3fd8/raw/64a0ba3ee02d52536157d2dd01dddb1069175a8f/buildings")
-    fun getExercises(): Single<List<Building>>
+    fun getBuildings(): Single<List<Building>>
 
 }
